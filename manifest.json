@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "URLpaste",
+    "description": "Copy URLs in batch",
+    "version": "0.1",
+    "browser_action": {
+        "default_icon": {},
+        "default_title": "Copy URLs!"
+    },
+    "background": {
+        "scripts": [
+            "index.js"
+        ]
+    },
+    "permissions": [
+        "tabs",
+        "clipboardWrite"
+    ]
+}
