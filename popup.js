@@ -40,7 +40,7 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
             let urls = pasteArea.value.split('\n').filter(url => url.trim() !== '');
             urls.forEach(url => {
                 try {
-                    new URL(url); // Check if URL is valid
+                    new URL(url);
                     browser.tabs.create({ url: url });
                 } catch (e) {
                     console.error(`Invalid URL: ${url}`);

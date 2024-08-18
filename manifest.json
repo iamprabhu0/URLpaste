@@ -5,13 +5,13 @@
     "version": "0.1",
     "browser_action": {
         "default_popup": "popup.html",
-        "default_icon": {},
-        "default_title": "Copy URLs!"
+        "default_icon": {}
     },
     "background": {
         "scripts": [
-            "index.js"
-        ]
+            "popup.js"
+        ],
+        "persistent": false
     },
     "permissions": [
         "tabs",
