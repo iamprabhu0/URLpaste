@@ -35,10 +35,8 @@ document.getElementById('pasteBtn').addEventListener('click', function handlePas
         let pasteBtn = document.getElementById('pasteBtn');
         pasteBtn.textContent = 'Open';
 
-        // Remove the previous event listener
         pasteBtn.removeEventListener('click', handlePasteClick);
 
-        // Add new event listener for "Open" button
         pasteBtn.addEventListener('click', function handleOpenClick() {
             let urls = pasteArea.value.split('\n').filter(url => url.trim() !== '');
             urls.forEach(url => {
