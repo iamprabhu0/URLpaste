@@ -21,7 +21,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
     }
 });
 
-document.getElementById('pasteBtn').addEventListener('click', async function () {
+document.getElementById('pasteBtn').addEventListener('click', function handlePasteClick() {
     try {
         let pasteArea = document.getElementById('pasteArea');
         pasteArea.value = "";
@@ -35,10 +35,11 @@ document.getElementById('pasteBtn').addEventListener('click', async function () 
         let pasteBtn = document.getElementById('pasteBtn');
         pasteBtn.textContent = 'Open';
 
-        // Use an anonymous function directly for the new click event
-        pasteBtn.removeEventListener('click', arguments.callee);
+        // Remove the previous event listener
+        pasteBtn.removeEventListener('click', handlePasteClick);
 
-        pasteBtn.addEventListener('click', function () {
+        // Add new event listener for "Open" button
+        pasteBtn.addEventListener('click', function handleOpenClick() {
             let urls = pasteArea.value.split('\n').filter(url => url.trim() !== '');
             urls.forEach(url => {
                 try {
@@ -54,4 +55,3 @@ document.getElementById('pasteBtn').addEventListener('click', async function () 
         alert('Failed to process paste operation. Check console for details.');
     }
 });
-
