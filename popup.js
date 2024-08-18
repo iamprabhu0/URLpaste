@@ -5,11 +5,6 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
             highlighted: true,
         });
 
-        if (tabs.length === 0) {
-            alert('No highlighted tabs');
-            return;
-        }
-
         let urls = tabs.map(tab => tab.url);
         let result = urls.join('\n');
 
@@ -20,7 +15,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
 
         setTimeout(() => {
             notification.style.display = 'none';
-        }, 3000);
+        }, 1000);
     } catch (error) {
         console.error('Error copying URLs to clipboard:', error);
     }
@@ -42,7 +37,15 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
         pasteBtn.removeEventListener('click', arguments.callee);
 
         pasteBtn.addEventListener('click', () => {
-            console.log('Open button clicked');
+            let urls = pasteArea.value.split('\n').filter(url => url.trim() !== '');
+            urls.forEach(url => {
+                try {
+                    new URL(url); // Check if URL is valid
+                    browser.tabs.create({ url: url });
+                } catch (e) {
+                    console.error(`Invalid URL: ${url}`);
+                }
+            });
         });
     } catch (error) {
         console.error('Error pasting text from clipboard:', error);
