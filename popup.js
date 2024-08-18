@@ -21,7 +21,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
     }
 });
 
-document.getElementById('pasteBtn').addEventListener('click', async () => {
+const handlePasteClick = async () => {
     try {
         let pasteArea = document.getElementById('pasteArea');
         pasteArea.value = "";
@@ -29,12 +29,12 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
 
         document.body.style.width = '800px';
         document.body.style.height = '400px';
-
-        pasteArea.style.height = '400px';
+        pasteArea.style.width = '780px';
+        pasteArea.style.height = '350px';
 
         let pasteBtn = document.getElementById('pasteBtn');
         pasteBtn.textContent = 'Open';
-        pasteBtn.removeEventListener('click', arguments.callee);
+        pasteBtn.removeEventListener('click', handlePasteClick);
 
         pasteBtn.addEventListener('click', () => {
             let urls = pasteArea.value.split('\n').filter(url => url.trim() !== '');
@@ -48,6 +48,9 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
             });
         });
     } catch (error) {
-        console.error('Error pasting text from clipboard:', error);
+        console.error('Error processing paste operation:', error);
+        alert('Failed to process paste operation. Check console for details.');
     }
-});
+};
+
+document.getElementById('pasteBtn').addEventListener('click', handlePasteClick);

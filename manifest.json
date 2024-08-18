@@ -7,12 +7,6 @@
         "default_popup": "popup.html",
         "default_icon": {}
     },
-    "background": {
-        "scripts": [
-            "popup.js"
-        ],
-        "persistent": false
-    },
     "permissions": [
         "tabs",
         "clipboardWrite"
