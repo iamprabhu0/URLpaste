@@ -26,6 +26,20 @@
             margin-right: 0;
         }
 
+        #notification {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            z-index: 1000;
+            border-radius: 5px;
+        }
+
         textarea {
             width: 100%;
             height: 100px;
@@ -41,6 +55,7 @@
         <button id="pasteBtn">Paste</button>
     </div>
     <textarea id="pasteArea"></textarea>
+    <div id="notification">URLs copied to clipboard</div>
 
     <script src="popup.js"></script>
 </body>

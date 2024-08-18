@@ -5,11 +5,22 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
             highlighted: true,
         });
 
+        if (tabs.length === 0) {
+            alert('No highlighted tabs to copy URLs from.');
+            return;
+        }
+
         let urls = tabs.map(tab => tab.url);
         let result = urls.join('\n');
 
         await navigator.clipboard.writeText(result);
-        console.log('URLs copied to clipboard');
+
+        let notification = document.getElementById('notification');
+        notification.style.display = 'block';
+
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
     } catch (error) {
         console.error('Error copying URLs to clipboard:', error);
     }
