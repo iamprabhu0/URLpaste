@@ -6,7 +6,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
         });
 
         if (tabs.length === 0) {
-            alert('No highlighted tabs to copy URLs from.');
+            alert('No highlighted tabs');
             return;
         }
 
